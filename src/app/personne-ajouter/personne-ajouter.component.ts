@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Personne } from '../personne';
+import { NgForm } from '@angular/forms';
+import { Personne } from '../models/personne';
+import { PersonneServiceService } from '../services/personne-service.service';
 
 @Component({
   selector: 'app-personne-ajouter',
@@ -8,25 +9,20 @@ import { Personne } from '../personne';
   styleUrls: ['./personne-ajouter.component.scss'],
 })
 export class PersonneAjouterComponent implements OnInit {
-  registerForm!: FormGroup;
+  constructor(private ps: PersonneServiceService) {}
 
-  constructor() {}
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.registerForm = new FormGroup({
-      firstname: new FormControl(),
-      lastname: new FormControl(),
-      phoneNumber: new FormControl(),
-    });
+  public traiterFormulaire(form: NgForm) {
+    console.log(form.value);
+    //ajouter la personne a la base
+    this.ps.ajouterPersonne(this.formValueToPersonne(form.value));
   }
-
-  public save() {
-    let registerPeople = new Personne(
-      0,
-      this.registerForm.value.firstname,
-      this.registerForm.value.lastname,
-      this.registerForm.value.phoneNumber
-    );
-    console.log('Données du formulaire ...', registerPeople);
+  formValueToPersonne(formValue: any): Personne {
+    return {
+      firstname: formValue.firstname,
+      lastname: formValue.lastname,
+      phoneNumber: formValue.phoneNumber,
+    } as Personne;
   }
 }

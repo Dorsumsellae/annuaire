@@ -1,16 +1,16 @@
 <h2>Ajouter une personne</h2>
-<form [formGroup]="registerForm" (ngSubmit)="save()">
+<form #f="ngForm" (submit)="traiterFormulaire(f)">
   <div>
     <label for="firstname">Prénom</label>
-    <input type="text" name="firstname" formControlName="firstname">
+    <input type="text" name="firstname" ngModel>
   </div>
   <div>
     <label for="lastname">Nom</label>
-    <input type="text" name="lastname" formControlName="lastname">
+    <input type="text" name="lastname" ngModel>
   </div>
   <div>
     <label for="phoneNumber">Numéro de téléphone </label>
-    <input type="text" name="phoneNumber" formControlName="phoneNumber">
+    <input type="text" name="phoneNumber" ngModel>
   </div>
   <div>
     <button type="submit">Enregistrer</button>

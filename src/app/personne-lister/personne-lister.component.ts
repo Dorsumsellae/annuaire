@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PERSONNES } from '../mock-personne';
-import { Personne } from '../personne';
+import { Personne } from '../models/personne';
+import { PersonneServiceService } from '../services/personne-service.service';
 
 @Component({
   selector: 'app-personne-lister',
@@ -8,13 +8,15 @@ import { Personne } from '../personne';
   styleUrls: ['./personne-lister.component.scss'],
 })
 export class PersonneListerComponent implements OnInit {
-  personnes: Personne[] = PERSONNES;
+  personnes: Personne[] = [];
+  constructor(private ps: PersonneServiceService) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.personnes = this.ps.personnes;
+  }
 
   public suppPersonne(personne: Personne) {
+    this.ps.supprimerPersonne(personne);
     console.log(`La personne ${personne.firstname} a été supprimée`);
   }
 }
