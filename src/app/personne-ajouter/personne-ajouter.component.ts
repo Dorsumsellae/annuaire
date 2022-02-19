@@ -20,8 +20,8 @@ export class PersonneAjouterComponent implements OnInit {
   }
   formValueToPersonne(formValue: any): Personne {
     return {
-      firstname: formValue.firstname,
-      lastname: formValue.lastname,
+      firstname: formValue.firstname.toLowerCase(),
+      lastname: formValue.lastname.toUpperCase(),
       phoneNumber: formValue.phoneNumber,
     } as Personne;
   }
