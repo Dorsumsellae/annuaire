@@ -15,7 +15,7 @@ export class PersonneListerComponent implements OnInit {
     this.personnes = this.ps.personnes;
   }
 
-  public suppPersonne(personne: Personne) {
+  public suppPersonne(personne: Personne): void {
     this.ps.supprimerPersonne(personne);
     console.log(`La personne ${personne.firstname} a été supprimée`);
   }

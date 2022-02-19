@@ -8,10 +8,11 @@ export class PersonneServiceService {
   personnes: Personne[] = [];
   constructor() {}
 
-  ajouterPersonne(personne: Personne) {
+  ajouterPersonne(personne: Personne): void {
     this.personnes.push(personne);
   }
-  supprimerPersonne(personne: Personne) {
+
+  supprimerPersonne(personne: Personne): void {
     const index = this.personnes.indexOf(personne);
     if (index > -1) {
       this.personnes.splice(index, 1);
