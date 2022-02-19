@@ -1,23 +1,25 @@
 <h2>Ajouter une personne</h2>
-<form (submit)="traiterFormulaire()">
+<form [formGroup]="form" (submit)="traiterFormulaire()">
   <div>
     <label for="firstname">Prénom</label>
-    <input type="text" name="firstname" [formControl]="firstname">
-    <span *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert">
+    <input type="text" name="firstname" formControlName="firstname">
+    <span *ngIf="form.get('firstname')?.invalid && (form.get('firstname')?.dirty || form.get('firstname')?.touched)"
+      class="alert">
       Veuillez entrer un prénom
     </span>
   </div>
   <div>
     <label for="lastname">Nom</label>
-    <input type="text" name="lastname" [formControl]="lastname">
-    <span *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert">
+    <input type="text" name="lastname" formControlName="lastname">
+    <span *ngIf="form.get('lastname')?.invalid && (form.get('lastname')?.dirty || form.get('lastname')?.touched)"
+      class="alert">
       Veuillez entrer un nom
     </span>
   </div>
   <div>
     <label for="phoneNumber">Numéro de téléphone </label>
-    <input type="text" name="phoneNumber" [formControl]="phoneNumber">
-    <span *ngIf="phoneNumber.invalid && phoneNumber.dirty" class="alert">
+    <input type="text" name="phoneNumber" formControlName="phoneNumber">
+    <span *ngIf="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.dirty" class="alert">
       Numéro de téléphone invalid : <br>entrez un numéro au format +33123456789
     </span>
   </div>

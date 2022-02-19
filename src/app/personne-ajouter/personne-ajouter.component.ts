@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Personne } from '../models/personne';
 import { PersonneServiceService } from '../services/personne-service.service';
 
@@ -11,20 +11,18 @@ import { PersonneServiceService } from '../services/personne-service.service';
 export class PersonneAjouterComponent implements OnInit {
   constructor(private ps: PersonneServiceService) {}
 
-  firstname = new FormControl('', Validators.required);
-  lastname = new FormControl('', Validators.required);
-  phoneNumber = new FormControl('', [Validators.pattern('[- +()0-9]{12}')]);
+  form = new FormGroup({
+    firstname: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', [Validators.pattern('[- +()0-9]{12}')]),
+  });
 
   ngOnInit(): void {}
 
   public traiterFormulaire() {
     //console.log(form.value);
     //ajouter la personne à la liste
-    if (
-      !this.firstname.invalid &&
-      !this.lastname.invalid &&
-      !this.phoneNumber.invalid
-    ) {
+    if (!this.form.invalid) {
       this.ps.ajouterPersonne(this.reactiveFormTopersonne());
       this.resetForm();
     }
@@ -32,16 +30,14 @@ export class PersonneAjouterComponent implements OnInit {
 
   reactiveFormTopersonne(): Personne {
     return {
-      firstname: this.firstname.value,
-      lastname: this.lastname.value,
-      phoneNumber: this.phoneNumber.value,
+      firstname: this.form.value.firstname,
+      lastname: this.form.value.lastname,
+      phoneNumber: this.form.value.phoneNumber,
     } as Personne;
   }
 
   resetForm(): void {
-    this.firstname.reset();
-    this.lastname.reset();
-    this.phoneNumber.reset();
+    this.form.reset();
   }
 
   formValueToPersonne(formValue: any): Personne {
