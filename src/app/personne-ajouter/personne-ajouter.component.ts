@@ -15,7 +15,7 @@ export class PersonneAjouterComponent implements OnInit {
 
   public traiterFormulaire(form: NgForm) {
     console.log(form.value);
-    //ajouter la personne a la base
+    //ajouter la personne à la liste
     this.ps.ajouterPersonne(this.formValueToPersonne(form.value));
   }
   formValueToPersonne(formValue: any): Personne {
