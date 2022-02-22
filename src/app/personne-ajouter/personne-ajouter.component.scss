@@ -18,6 +18,10 @@ input[type=text] {
   outline: none;
 }
 
+input:invalid {
+  border: 2px solid red;
+}
+
 label {
   padding: 1em 1em 1em 0;
   display: inline-block;
