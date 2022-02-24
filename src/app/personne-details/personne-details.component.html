@@ -1,0 +1,11 @@
+<div class="personne">
+  <div class="infoPersonne">
+    <p>
+      <span>{{i}}</span>
+      <span class="firstname">{{personne.firstname | titlecase}}</span>
+      <span class="lastname">{{personne.lastname}}</span>
+    </p>
+    <p class="phoneNumber">{{personne.phoneNumber}}</p>
+  </div>
+  <button class="supprimer" (click)="suppPersonne(personne)">Supprimer</button>
+</div>

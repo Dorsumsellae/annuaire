@@ -5,8 +5,15 @@ import { Personne } from '../models/personne';
   providedIn: 'root',
 })
 export class PersonneServiceService {
-  personnes: Personne[] = [];
+  personnes: Personne[] = [
+    { firstname: 'harry', lastname: 'Potter', phoneNumber: '+33678912345' },
+    { firstname: 'harry', lastname: 'Potter', phoneNumber: '+33678912345' },
+  ];
   constructor() {}
+
+  getPersonne(): Personne[] {
+    return this.personnes;
+  }
 
   ajouterPersonne(personne: Personne): void {
     this.personnes.push(personne);

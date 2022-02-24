@@ -14,9 +14,4 @@ export class PersonneListerComponent implements OnInit {
   ngOnInit(): void {
     this.personnes = this.ps.personnes;
   }
-
-  public suppPersonne(personne: Personne): void {
-    this.ps.supprimerPersonne(personne);
-    console.log(`La personne ${personne.firstname} a été supprimée`);
-  }
 }

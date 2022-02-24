@@ -11,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { PersonneListerComponent } from './personne-lister/personne-lister.component';
 import { AproposComponent } from './apropos/apropos.component';
 import { ContactComponent } from './contact/contact.component';
+import { PersonneDetailsComponent } from './personne-details/personne-details.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ContactComponent } from './contact/contact.component';
     PersonneListerComponent,
     AproposComponent,
     ContactComponent,
+    PersonneDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [],
