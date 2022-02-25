@@ -1,6 +1,8 @@
 <h2>Contenu de l'annuaire</h2>
 <div class="personnes">
   <div *ngFor="let personne of personnes; let i=index" class="personne">
-    <app-personne-details [i]="i" [personne]="personne"></app-personne-details>
+    <app-personne-details [i]="i" [personne]="personne"
+      (supressionPersonneEventEmitter)="traiterSuppressionPersonne($event)">
+    </app-personne-details>
   </div>
 </div>
