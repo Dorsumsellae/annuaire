@@ -9,6 +9,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class AppComponent {
   title = 'annuaire';
   name = 'name';
+  today: number = Date.now();
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {

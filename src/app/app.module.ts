@@ -12,6 +12,7 @@ import { PersonneListerComponent } from './personne-lister/personne-lister.compo
 import { AproposComponent } from './apropos/apropos.component';
 import { ContactComponent } from './contact/contact.component';
 import { PersonneDetailsComponent } from './personne-details/personne-details.component';
+import { UpperfirstPipe } from './pipes/upperfirst.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PersonneDetailsComponent } from './personne-details/personne-details.co
     AproposComponent,
     ContactComponent,
     PersonneDetailsComponent,
+    UpperfirstPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [],

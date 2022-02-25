@@ -30,3 +30,7 @@ span {
   order: 1;
   align-self: flex-end;
 }
+
+.phoneNumber::before {
+  content: "\1F4DE";
+}

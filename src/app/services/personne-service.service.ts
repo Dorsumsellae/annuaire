@@ -6,8 +6,17 @@ import { Personne } from '../models/personne';
 })
 export class PersonneServiceService {
   personnes: Personne[] = [
-    { firstname: 'harry', lastname: 'Potter', phoneNumber: '+33678912345' },
-    { firstname: 'harry', lastname: 'Potter', phoneNumber: '+33678912345' },
+    { firstname: 'Gaston', lastname: 'Lagaffe', phoneNumber: '+33678912345' },
+    {
+      firstname: 'Jeanne',
+      lastname: 'De chez Smith',
+      phoneNumber: '',
+    },
+    {
+      firstname: 'jules',
+      lastname: 'Mademoiselle',
+      phoneNumber: '+33678912345',
+    },
   ];
   constructor() {}
 
