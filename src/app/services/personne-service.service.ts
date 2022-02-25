@@ -12,7 +12,7 @@ export class PersonneServiceService {
   constructor() {}
 
   getPersonne(): Personne[] {
-    return this.personnes;
+    return this.personnes.slice();
   }
 
   ajouterPersonne(personne: Personne): void {
@@ -20,10 +20,6 @@ export class PersonneServiceService {
   }
 
   supprimerPersonne(personne: Personne): void {
-    const index = this.personnes.indexOf(personne);
-    if (index > -1) {
-      this.personnes.splice(index, 1);
-    }
-    console.log(this.personnes);
+    this.personnes = this.personnes.filter((p) => p != personne);
   }
 }

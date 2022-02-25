@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { Personne } from '../models/personne';
-import { PersonneServiceService } from '../services/personne-service.service';
 
 @Component({
   selector: 'app-personne-details',
@@ -13,12 +13,15 @@ export class PersonneDetailsComponent implements OnInit {
 
   @Input()
   i!: number;
-  constructor(private ps: PersonneServiceService) {}
+
+  @Output()
+  supressionPersonneEventEmitter = new EventEmitter<Personne>();
+
+  constructor() {}
 
   ngOnInit(): void {}
 
-  public suppPersonne(personne: Personne): void {
-    this.ps.supprimerPersonne(personne);
-    console.log(`La personne ${personne.firstname} a été supprimée`);
+  public onClickBoutonSupprimer(personne: Personne): void {
+    this.supressionPersonneEventEmitter.emit(personne);
   }
 }

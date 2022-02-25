@@ -3,9 +3,9 @@
     <p>
       <span>{{i}}</span>
       <span class="firstname">{{personne.firstname | titlecase}}</span>
-      <span class="lastname">{{personne.lastname}}</span>
+      <span class="lastname">{{personne.lastname |uppercase }}</span>
     </p>
-    <p class="phoneNumber">{{personne.phoneNumber}}</p>
+    <p class="phoneNumber"> <i class="fa-solid fa-phone"></i> {{personne.phoneNumber}}</p>
   </div>
-  <button class="supprimer" (click)="suppPersonne(personne)">Supprimer</button>
+  <button class="supprimer" (click)="onClickBoutonSupprimer(personne)">Supprimer</button>
 </div>
