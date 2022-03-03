@@ -1,0 +1,35 @@
+ 
+Méthode DELETE
+URL = http://localhost:3000/api/Personnes/{id}
+
+
+_____ Code Personne.service.ts_____
+
+supprimerPersonne(personne: Personne): Observable<Personne> {
+    return this.http.delete<Personne>(this.personnesUrl + '/' + personne.id, {
+      body: personne,
+    });
+
+_____________________________________
+
+_____ Code Personne-lister.component.ts ___
+
+  traiterSuppressionPersonne(personneAsupprimer: Personne): void {
+    this.ps.supprimerPersonne(personneAsupprimer).subscribe((res) => {
+      console.log(res);
+    });
+    this.ps
+      .getPersonne()
+      .subscribe((personnes) => (this.personnes = personnes));
+  }
+
+_____________________________________
+
+_____ Code Personne.ts _____
+
+export interface Personne {
+  id: number;
+  prenom: string;
+  nom: string;
+  telephone: string;
+}

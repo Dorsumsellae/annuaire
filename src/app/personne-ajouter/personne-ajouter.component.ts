@@ -14,14 +14,17 @@ export class PersonneAjouterComponent implements OnInit {
   ngOnInit(): void {}
 
   public traiterFormulaire(form: NgForm) {
-    console.log(form.value);
     //ajouter la personne à la liste
     if (!form.invalid) {
       this.ps
         .ajouterPersonne(this.formValueToPersonne(form.value))
         .subscribe((res) => {
+          console.log('Res add personne');
           console.log(res);
         });
+      console.log('Form.value to personne');
+      console.log(this.formValueToPersonne(form.value));
+
       form.resetForm();
     }
   }

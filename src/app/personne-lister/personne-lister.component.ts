@@ -10,20 +10,25 @@ import { PersonneServiceService } from '../services/personne-service.service';
 export class PersonneListerComponent implements OnInit {
   personnes: Personne[] = [];
 
-  constructor(private ps: PersonneServiceService) {
+  updatePersonne() {
     this.ps
       .getPersonne()
       .subscribe((personnes: Personne[]) => (this.personnes = personnes));
   }
 
+  constructor(private ps: PersonneServiceService) {
+    this.updatePersonne();
+  }
+
   ngOnInit(): void {}
 
   traiterSuppressionPersonne(personneAsupprimer: Personne): void {
-    this.ps.supprimerPersonne(personneAsupprimer).subscribe((res) => {
-      console.log(res);
+    this.ps.supprimerPersonne(personneAsupprimer).subscribe((res: any) => {
+      if (res?.count) {
+        this.updatePersonne();
+      } else {
+        console.log('Erreur suppression personne');
+      }
     });
-    this.ps
-      .getPersonne()
-      .subscribe((personnes) => (this.personnes = personnes));
   }
 }

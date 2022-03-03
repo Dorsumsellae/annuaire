@@ -14,12 +14,12 @@ export class PersonneServiceService {
     return this.http.get<Personne[]>(this.personnesUrl);
   }
 
-  ajouterPersonne(personne: Personne): Observable<Personne> {
-    return this.http.post<Personne>(this.personnesUrl, personne);
+  ajouterPersonne(personne: Personne): Observable<any> {
+    return this.http.post(this.personnesUrl, personne);
   }
 
-  supprimerPersonne(personne: Personne): Observable<Personne> {
-    return this.http.delete<Personne>(this.personnesUrl + '/' + personne.id, {
+  supprimerPersonne(personne: Personne) {
+    return this.http.delete(this.personnesUrl + '/' + personne.id, {
       body: personne,
     });
     //todo
