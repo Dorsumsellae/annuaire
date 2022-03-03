@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'lister-personnes', component: PersonneListerComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'apropos', component: AproposComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({

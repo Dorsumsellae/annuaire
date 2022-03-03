@@ -6,7 +6,7 @@
     <div class="alert">
       <div *ngIf="champNom.invalid && (champNom.dirty || champNom.touched)">
         <div *ngIf="champNom.errors?.['required']">
-          Le nom est requis
+          Le prénom est requis
         </div>
         <div *ngIf="champNom.errors?.['minlength']">
           Le nom doit comporter au moins deux caractères
@@ -16,7 +16,7 @@
   </div>
   <div>
     <label for="lastname">Nom</label>
-    <input type="text" name="lastname" ngModel>
+    <input type="text" name="lastname" ngModel required>
   </div>
   <div>
     <label for="phoneNumber">Numéro de téléphone </label>

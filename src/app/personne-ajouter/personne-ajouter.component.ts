@@ -17,15 +17,19 @@ export class PersonneAjouterComponent implements OnInit {
     console.log(form.value);
     //ajouter la personne à la liste
     if (!form.invalid) {
-      this.ps.ajouterPersonne(this.formValueToPersonne(form.value));
+      this.ps
+        .ajouterPersonne(this.formValueToPersonne(form.value))
+        .subscribe((res) => {
+          console.log(res);
+        });
       form.resetForm();
     }
   }
   formValueToPersonne(formValue: any): Personne {
     return {
-      firstname: formValue.firstname.toLowerCase(),
-      lastname: formValue.lastname.toUpperCase(),
-      phoneNumber: formValue.phoneNumber,
+      prenom: formValue.firstname.toLowerCase(),
+      nom: formValue.lastname.toUpperCase(),
+      telephone: formValue.phoneNumber,
     } as Personne;
   }
 }

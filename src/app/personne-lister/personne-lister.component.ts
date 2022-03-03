@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Personne } from '../models/personne';
 import { PersonneServiceService } from '../services/personne-service.service';
 
@@ -10,14 +9,21 @@ import { PersonneServiceService } from '../services/personne-service.service';
 })
 export class PersonneListerComponent implements OnInit {
   personnes: Personne[] = [];
-  constructor(private ps: PersonneServiceService, private router: Router) {
-    this.personnes = this.ps.getPersonne();
+
+  constructor(private ps: PersonneServiceService) {
+    this.ps
+      .getPersonne()
+      .subscribe((personnes: Personne[]) => (this.personnes = personnes));
   }
 
   ngOnInit(): void {}
 
   traiterSuppressionPersonne(personneAsupprimer: Personne): void {
-    this.ps.supprimerPersonne(personneAsupprimer);
-    this.personnes = this.ps.getPersonne();
+    this.ps.supprimerPersonne(personneAsupprimer).subscribe((res) => {
+      console.log(res);
+    });
+    this.ps
+      .getPersonne()
+      .subscribe((personnes) => (this.personnes = personnes));
   }
 }
