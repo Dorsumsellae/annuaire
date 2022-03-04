@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Personne } from '../models/personne';
+import { MessagesService } from '../services/messages.service';
 import { PersonneServiceService } from '../services/personne-service.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class PersonneListerComponent implements OnInit {
       .subscribe((personnes: Personne[]) => (this.personnes = personnes));
   }
 
-  constructor(private ps: PersonneServiceService) {
+  constructor(private ps: PersonneServiceService, private ms: MessagesService) {
     this.updatePersonne();
   }
 
@@ -26,6 +27,7 @@ export class PersonneListerComponent implements OnInit {
     this.ps.supprimerPersonne(personneAsupprimer).subscribe((res: any) => {
       if (res?.count) {
         this.updatePersonne();
+        this.ms.createDelPersonneMessage(personneAsupprimer);
       } else {
         console.log('Erreur suppression personne');
       }

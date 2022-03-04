@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MessagesComponent } from '../messages/messages.component';
+
 import { Personne } from '../models/personne';
+import { MessagesService } from '../services/messages.service';
 import { PersonneServiceService } from '../services/personne-service.service';
 
 @Component({
@@ -9,22 +12,24 @@ import { PersonneServiceService } from '../services/personne-service.service';
   styleUrls: ['./personne-ajouter.component.scss'],
 })
 export class PersonneAjouterComponent implements OnInit {
-  constructor(private ps: PersonneServiceService) {}
+  constructor(
+    private ps: PersonneServiceService,
+    private ms: MessagesService
+  ) {}
 
   ngOnInit(): void {}
 
   public traiterFormulaire(form: NgForm) {
     //ajouter la personne à la liste
     if (!form.invalid) {
-      this.ps
-        .ajouterPersonne(this.formValueToPersonne(form.value))
-        .subscribe((res) => {
-          console.log('Res add personne');
-          console.log(res);
-        });
+      let personne = this.formValueToPersonne(form.value);
+      this.ps.ajouterPersonne(personne).subscribe((res) => {
+        console.log('Res add personne');
+        console.log(res);
+        this.ms.createAddPersonneMessage(personne);
+      });
       console.log('Form.value to personne');
       console.log(this.formValueToPersonne(form.value));
-
       form.resetForm();
     }
   }

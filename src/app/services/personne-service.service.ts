@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Personne } from '../models/personne';
@@ -8,6 +8,9 @@ import { Personne } from '../models/personne';
 })
 export class PersonneServiceService {
   personnesUrl = 'http://localhost:3000/api/Personnes';
+  private httpOptions = {
+    headers: new HttpHeaders({ 'content-Type': 'application/json' }),
+  };
   constructor(private http: HttpClient) {}
 
   getPersonne(): Observable<Personne[]> {
@@ -15,14 +18,16 @@ export class PersonneServiceService {
   }
 
   ajouterPersonne(personne: Personne): Observable<any> {
-    return this.http.post(this.personnesUrl, personne);
+    return this.http.post(this.personnesUrl, personne, this.httpOptions);
   }
 
   supprimerPersonne(personne: Personne) {
     return this.http.delete(this.personnesUrl + '/' + personne.id, {
       body: personne,
     });
-    //todo
-    //this.personnes = this.personnes.filter((p) => p != personne);
+  }
+
+  countPersonne() {
+    return this.http.get<any>(this.personnesUrl + '/count');
   }
 }

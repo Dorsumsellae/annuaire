@@ -1,0 +1,7 @@
+<div *ngIf="ms.messageArray.length" class="messages">
+  <h2>Log Messages</h2>
+  <div *ngFor=" let message of ms.messageStringArray" class="messages">
+    <p>{{message}}</p>
+  </div>
+  <button (click)="ms.clearMessage()"> Clear</button>
+</div>

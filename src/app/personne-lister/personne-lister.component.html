@@ -1,4 +1,5 @@
 <h2>Contenu de l'annuaire</h2>
+<p>il y a {{personnes.length}} personnes dans l'annuaire </p>
 <div class="personnes">
   <div *ngFor="let personne of personnes; let i=index" class="personne">
     <app-personne-details [i]="i" [personne]="personne"

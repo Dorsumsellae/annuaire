@@ -13,6 +13,7 @@ import { AproposComponent } from './apropos/apropos.component';
 import { ContactComponent } from './contact/contact.component';
 import { PersonneDetailsComponent } from './personne-details/personne-details.component';
 import { UpperfirstPipe } from './pipes/upperfirst.pipe';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UpperfirstPipe } from './pipes/upperfirst.pipe';
     ContactComponent,
     PersonneDetailsComponent,
     UpperfirstPipe,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
