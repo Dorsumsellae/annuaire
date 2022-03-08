@@ -3,4 +3,6 @@ export interface Personne {
   prenom: string;
   nom: string;
   telephone: string;
+  civilite: string;
+  adresse: string;
 }

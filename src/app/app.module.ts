@@ -14,6 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PersonneDetailsComponent } from './personne-details/personne-details.component';
 import { UpperfirstPipe } from './pipes/upperfirst.pipe';
 import { MessagesComponent } from './messages/messages.component';
+import { PersonneCompterComponent } from './personne-compter/personne-compter.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MessagesComponent } from './messages/messages.component';
     PersonneDetailsComponent,
     UpperfirstPipe,
     MessagesComponent,
+    PersonneCompterComponent,
   ],
   imports: [
     BrowserModule,

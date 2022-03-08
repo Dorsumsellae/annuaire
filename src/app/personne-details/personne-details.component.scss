@@ -11,10 +11,10 @@ span {
   margin: 0.1rem;
 }
 
-.firstname {
+.index {
 
-  &::before {
-    content: "- ";
+  &::after {
+    content: " - ";
   }
 }
 

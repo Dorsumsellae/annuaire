@@ -27,7 +27,7 @@ export class PersonneServiceService {
     });
   }
 
-  countPersonne() {
-    return this.http.get<any>(this.personnesUrl + '/count');
+  countPersonne(): Observable<any> {
+    return this.http.get<Personne>(this.personnesUrl + '/count');
   }
 }

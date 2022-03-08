@@ -1,12 +1,16 @@
 <div class="personne">
   <div class="infoPersonne">
     <p>
-      <span>{{i}}</span>
+      <span class="index">{{i}}</span>
+      <span>{{personne.civilite}} </span>
       <span class="firstname">{{personne.prenom | upperfirst}}</span>
       <span class="lastname">{{personne.nom |uppercase }}</span>
     </p>
     <p class="phoneNumber" *ngIf="personne.telephone">
       {{personne.telephone}}
+    </p>
+    <p *ngIf="personne.adresse">
+      {{personne.adresse}}
     </p>
   </div>
   <button class="supprimer" (click)="onClickBoutonSupprimer(personne)">Supprimer</button>

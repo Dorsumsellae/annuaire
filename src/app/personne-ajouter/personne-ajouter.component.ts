@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MessagesComponent } from '../messages/messages.component';
 
 import { Personne } from '../models/personne';
 import { MessagesService } from '../services/messages.service';
@@ -38,6 +37,8 @@ export class PersonneAjouterComponent implements OnInit {
       prenom: formValue.firstname.toLowerCase(),
       nom: formValue.lastname.toUpperCase(),
       telephone: formValue.phoneNumber,
+      civilite: formValue.civilite,
+      adresse: formValue.adresse,
     } as Personne;
   }
 }

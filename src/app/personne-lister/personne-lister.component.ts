@@ -10,6 +10,7 @@ import { PersonneServiceService } from '../services/personne-service.service';
 })
 export class PersonneListerComponent implements OnInit {
   personnes: Personne[] = [];
+  modif: boolean = false;
 
   updatePersonne() {
     this.ps
@@ -28,9 +29,17 @@ export class PersonneListerComponent implements OnInit {
       if (res?.count) {
         this.updatePersonne();
         this.ms.createDelPersonneMessage(personneAsupprimer);
+        this.modif = true;
       } else {
         console.log('Erreur suppression personne');
       }
     });
+  }
+
+  updateModif(modif: boolean) {
+    if (modif) {
+      this.modif = false;
+      console.log('updateModif');
+    }
   }
 }

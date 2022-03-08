@@ -1,6 +1,16 @@
 <h2>Ajouter une personne</h2>
 <form #f="ngForm" (submit)="traiterFormulaire(f)">
   <div>
+    <label for="civilite">Civilite</label>
+    <select name="civilite" ngModel>
+      <option value="Mr.">Mr.</option>
+      <option value="Mme.">Mme.</option>
+      <option value="Dr.">Dr.</option>
+      <option value="Pr.">Pr.</option>
+
+    </select>
+  </div>
+  <div>
     <label for="firstname">Prénom</label>
     <input type="text" name="firstname" ngModel #champNom="ngModel" required minlength="2" maxlength="50">
     <div class="alert">
@@ -17,6 +27,10 @@
   <div>
     <label for="lastname">Nom</label>
     <input type="text" name="lastname" ngModel required>
+  </div>
+  <div>
+    <label for="adresse">Adresse</label>
+    <input type="text" name="adresse" ngModel required>
   </div>
   <div>
     <label for="phoneNumber">Numéro de téléphone </label>
