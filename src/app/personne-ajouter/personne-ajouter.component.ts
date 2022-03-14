@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Personne } from '../models/personne';
@@ -16,6 +16,9 @@ export class PersonneAjouterComponent implements OnInit {
     private ms: MessagesService
   ) {}
 
+  @Output()
+  ajoutPersonneEventEmitter = new EventEmitter<Personne>();
+
   ngOnInit(): void {}
 
   public traiterFormulaire(form: NgForm) {
@@ -30,8 +33,10 @@ export class PersonneAjouterComponent implements OnInit {
       console.log('Form.value to personne');
       console.log(this.formValueToPersonne(form.value));
       form.resetForm();
+      this.ajoutPersonneEventEmitter.emit(personne);
     }
   }
+
   formValueToPersonne(formValue: any): Personne {
     return {
       prenom: formValue.firstname.toLowerCase(),

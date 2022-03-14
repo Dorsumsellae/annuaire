@@ -15,6 +15,15 @@ import { PersonneDetailsComponent } from './personne-details/personne-details.co
 import { UpperfirstPipe } from './pipes/upperfirst.pipe';
 import { MessagesComponent } from './messages/messages.component';
 import { PersonneCompterComponent } from './personne-compter/personne-compter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TabGroupComponent } from './tab-group/tab-group.component';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -29,6 +38,7 @@ import { PersonneCompterComponent } from './personne-compter/personne-compter.co
     UpperfirstPipe,
     MessagesComponent,
     PersonneCompterComponent,
+    TabGroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +46,12 @@ import { PersonneCompterComponent } from './personne-compter/personne-compter.co
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

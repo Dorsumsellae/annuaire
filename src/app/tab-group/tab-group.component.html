@@ -1,0 +1,23 @@
+<mat-tab-group>
+
+  <mat-tab label="Home">
+    <app-home></app-home>
+  </mat-tab>
+
+  <mat-tab label="Nouvelle Personne">
+    <app-personne-ajouter (ajoutPersonneEventEmitter)="addPersonneEvent($event)"></app-personne-ajouter>
+  </mat-tab>
+
+  <mat-tab label="Toutes les personnes">
+    <app-personne-lister [event]="addEvent"></app-personne-lister>
+  </mat-tab>
+
+  <mat-tab label="A propos">
+    <app-apropos></app-apropos>
+  </mat-tab>
+
+  <mat-tab label="Contact">
+    <app-contact></app-contact>
+  </mat-tab>
+
+</mat-tab-group>

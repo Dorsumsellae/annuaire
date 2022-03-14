@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Personne } from '../models/personne';
 import { MessagesService } from '../services/messages.service';
 import { PersonneServiceService } from '../services/personne-service.service';
@@ -8,7 +8,10 @@ import { PersonneServiceService } from '../services/personne-service.service';
   templateUrl: './personne-lister.component.html',
   styleUrls: ['./personne-lister.component.scss'],
 })
-export class PersonneListerComponent implements OnInit {
+export class PersonneListerComponent implements OnInit, OnChanges {
+  @Input()
+  event!: Personne;
+
   personnes: Personne[] = [];
   modif: boolean = false;
 
@@ -21,8 +24,6 @@ export class PersonneListerComponent implements OnInit {
   constructor(private ps: PersonneServiceService, private ms: MessagesService) {
     this.updatePersonne();
   }
-
-  ngOnInit(): void {}
 
   traiterSuppressionPersonne(personneAsupprimer: Personne): void {
     this.ps.supprimerPersonne(personneAsupprimer).subscribe((res: any) => {
@@ -41,5 +42,10 @@ export class PersonneListerComponent implements OnInit {
       this.modif = false;
       console.log('updateModif');
     }
+  }
+  ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    this.updatePersonne();
   }
 }
