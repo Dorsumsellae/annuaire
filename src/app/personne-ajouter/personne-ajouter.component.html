@@ -1,45 +1,58 @@
-<h2>Ajouter une personne</h2>
-<form #f="ngForm" (submit)="traiterFormulaire(f)">
-  <div>
-    <label for="civilite">Civilite</label>
-    <select name="civilite" ngModel>
-      <option value="Mr.">Mr.</option>
-      <option value="Mme.">Mme.</option>
-      <option value="Dr.">Dr.</option>
-      <option value="Pr.">Pr.</option>
+<mat-card fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  <mat-card-title>Ajouter une personne</mat-card-title>
+  <mat-card-content>
+    <form fxLayout="column" fxLayoutAlign="space-around" [formGroup]="form" (submit)="traiterFormulaire()">
+      <table>
+        <tr fxLayout="row" fxLayoutAlign="space-around end">
+          <td>
+            <mat-form-field class="civilite" appearance="fill">
+              <mat-label for="civilite">Civilite</mat-label>
+              <mat-select name="civilite" formControlName="civilite">
+                <mat-option value="Mr.">Mr.</mat-option>
+                <mat-option value="Mme.">Mme.</mat-option>
+                <mat-option value="Dr.">Dr.</mat-option>
+                <mat-option value="Pr.">Pr.</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="firstname" appearance="fill">
+              <mat-label for="firstname">Prénom</mat-label>
+              <input matInput type="text" name="firstname" formControlName="firstname">
+              <mat-error
+                *ngIf="form.get('firstname')?.errors?.['required']&& (form.get('firstname')?.dirty || form.get('firstname')?.touched)">
+                Le prénom est requis
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="lastname" appearance="fill">
+              <mat-label for="lastname">Nom</mat-label>
+              <input matInput type="text" name="lastname" formControlName="lastname">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
 
-    </select>
-  </div>
-  <div>
-    <label for="firstname">Prénom</label>
-    <input type="text" name="firstname" ngModel #champNom="ngModel" required minlength="2" maxlength="50">
-    <div class="alert">
-      <div *ngIf="champNom.invalid && (champNom.dirty || champNom.touched)">
-        <div *ngIf="champNom.errors?.['required']">
-          Le prénom est requis
-        </div>
-        <div *ngIf="champNom.errors?.['minlength']">
-          Le nom doit comporter au moins deux caractères
-        </div>
+      <div class="contact_add_personne" fxLayout="row" fxLayoutAlign="space-between end">
+        <mat-form-field fxFlex="45" class="adresse_form" appearance="fill">
+          <mat-label for="adresse">Adresse</mat-label>
+          <textarea matInput type="text" name="adresse" formControlName="adresse"></textarea>
+        </mat-form-field>
+        <mat-form-field fxFlex="45" class="phoneNumber_form" appearance="fill">
+          <mat-label for="phoneNumber">Numéro de téléphone </mat-label>
+          <input matInput type="text" name="phoneNumber" formControlName="phoneNumber">
+          <mat-error class="alert" *ngIf="form.get('phoneNumber')?.invalid">
+            Téléphone sous la forme xx xx xx xx xx
+          </mat-error>
+        </mat-form-field>
       </div>
-    </div>
-  </div>
-  <div>
-    <label for="lastname">Nom</label>
-    <input type="text" name="lastname" ngModel required>
-  </div>
-  <div>
-    <label for="adresse">Adresse</label>
-    <input type="text" name="adresse" ngModel required>
-  </div>
-  <div>
-    <label for="phoneNumber">Numéro de téléphone </label>
-    <input type="text" name="phoneNumber" #champTel="ngModel" ngModel pattern="^(\d{2}[. \-/]){4}\d{2}$">
-    <div class="alert" *ngIf="champTel.invalid">
-      Téléphone sous la forme xx xx xx xx xx
-    </div>
-  </div>
-  <div>
-    <button [hidden]="f.invalid" type="submit">Enregistrer</button>
-  </div>
-</form>
+
+      <div dir="rtl" class="submit-button-container">
+        <button mat-fab color="primary" [hidden]="this.form.invalid" type="submit">
+          <mat-icon>done</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

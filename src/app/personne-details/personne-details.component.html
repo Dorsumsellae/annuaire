@@ -1,17 +1,19 @@
-<div class="personne">
-  <div class="infoPersonne">
-    <p>
-      <span class="index">{{i}}</span>
-      <span>{{personne.civilite}} </span>
-      <span class="firstname">{{personne.prenom | upperfirst}}</span>
-      <span class="lastname">{{personne.nom |uppercase }}</span>
-    </p>
-    <p class="phoneNumber" *ngIf="personne.telephone">
-      {{personne.telephone}}
-    </p>
+<mat-card class="personne_card">
+  <mat-card-title>
+    <span class="index">{{i}}</span>
+    <span> - {{personne.civilite}} </span>
+    <span class="firstname">{{personne.prenom | upperfirst}}</span>
+    <span class="lastname"> {{personne.nom |uppercase }}</span>
+  </mat-card-title>
+  <mat-card-content class="phoneNumber" *ngIf="personne.telephone">
+    {{personne.telephone}}
     <p *ngIf="personne.adresse">
       {{personne.adresse}}
     </p>
-  </div>
-  <button class="supprimer" (click)="onClickBoutonSupprimer(personne)">Supprimer</button>
-</div>
+  </mat-card-content>
+  <mat-card-actions class="supprimer">
+    <button mat-fab color="warn" (click)="onClickBoutonSupprimer(personne)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -16,14 +16,18 @@ import { UpperfirstPipe } from './pipes/upperfirst.pipe';
 import { MessagesComponent } from './messages/messages.component';
 import { PersonneCompterComponent } from './personne-compter/personne-compter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TabGroupComponent } from './tab-group/tab-group.component';
 
+import { TabGroupComponent } from './tab-group/tab-group.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatSelectModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
