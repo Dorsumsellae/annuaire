@@ -22,7 +22,7 @@ export class PersonneListerComponent implements OnInit, OnChanges {
   }
 
   constructor(private ps: PersonneServiceService, private ms: MessagesService) {
-    this.updatePersonne();
+    // this.updatePersonne();
   }
 
   traiterSuppressionPersonne(personneAsupprimer: Personne): void {

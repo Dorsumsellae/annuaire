@@ -1,5 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Personne } from '../models/personne';
 import { MessagesService } from '../services/messages.service';
@@ -10,7 +17,7 @@ import { PersonneServiceService } from '../services/personne-service.service';
   templateUrl: './personne-ajouter.component.html',
   styleUrls: ['./personne-ajouter.component.scss'],
 })
-export class PersonneAjouterComponent implements OnInit {
+export class PersonneAjouterComponent implements OnInit, OnChanges {
   @Output()
   ajoutPersonneEventEmitter = new EventEmitter<Personne>();
 
@@ -19,7 +26,9 @@ export class PersonneAjouterComponent implements OnInit {
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     adresse: new FormControl(''),
-    phoneNumber: new FormControl('', [Validators.pattern('[- +()0-9]{12}')]),
+    phoneNumber: new FormControl('', [
+      Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$'),
+    ]),
   });
 
   public traiterFormulaire() {
@@ -27,14 +36,13 @@ export class PersonneAjouterComponent implements OnInit {
     if (!this.form.invalid) {
       let personne = this.formValueToPersonne();
       this.ps.ajouterPersonne(personne).subscribe((res) => {
-        console.log('Res add personne');
-        console.log(res);
         this.ms.createAddPersonneMessage(personne);
+        this.ajoutPersonneEventEmitter.emit(personne);
       });
-      console.log('Form.value to personne');
-      console.log(this.formValueToPersonne());
       this.form.reset();
-      this.ajoutPersonneEventEmitter.emit(personne);
+      Object.keys(this.form.controls).forEach((key) => {
+        this.form.get(key)?.setErrors(null);
+      });
     }
   }
 
@@ -54,4 +62,6 @@ export class PersonneAjouterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {}
 }
