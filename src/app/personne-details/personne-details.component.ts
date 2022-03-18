@@ -14,6 +14,9 @@ export class PersonneDetailsComponent implements OnInit {
   @Input()
   i!: number;
 
+  @Input()
+  displayContact!: boolean;
+
   @Output()
   supressionPersonneEventEmitter = new EventEmitter<Personne>();
 

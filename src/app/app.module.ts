@@ -26,8 +26,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PersonneModifierComponent } from './personne-modifier/personne-modifier.component';
+import { PersonnePopupComponent } from './personne-popup/personne-popup.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MessagesComponent,
     PersonneCompterComponent,
     TabGroupComponent,
+    PersonneModifierComponent,
+    PersonnePopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +66,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatMenuModule,
     MatSelectModule,
     FlexLayoutModule,
+    MatSlideToggleModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

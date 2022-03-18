@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Personne } from '../models/personne';
@@ -17,7 +10,7 @@ import { PersonneServiceService } from '../services/personne-service.service';
   templateUrl: './personne-ajouter.component.html',
   styleUrls: ['./personne-ajouter.component.scss'],
 })
-export class PersonneAjouterComponent implements OnInit, OnChanges {
+export class PersonneAjouterComponent implements OnInit {
   @Output()
   ajoutPersonneEventEmitter = new EventEmitter<Personne>();
 
@@ -62,6 +55,4 @@ export class PersonneAjouterComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {}
-
-  ngOnChanges(changes: SimpleChanges): void {}
 }

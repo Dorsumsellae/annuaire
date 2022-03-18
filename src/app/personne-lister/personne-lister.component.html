@@ -1,8 +1,9 @@
 <h2>Contenu de l'annuaire</h2>
+<mat-slide-toggle (change)="updateDisplayContact($event)">Afficher contact</mat-slide-toggle>
 <app-personne-compter [data]="personnes.length"></app-personne-compter>
 <div class="personnes">
   <div *ngFor="let personne of personnes; let i=index" class="personne">
-    <app-personne-details [i]="i" [personne]="personne"
+    <app-personne-details [i]="i" [personne]="personne" [displayContact]="displayContact"
       (supressionPersonneEventEmitter)="traiterSuppressionPersonne($event)">
     </app-personne-details>
   </div>

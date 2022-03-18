@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Personne } from '../models/personne';
 import { MessagesService } from '../services/messages.service';
 import { PersonneServiceService } from '../services/personne-service.service';
@@ -12,6 +13,10 @@ export class PersonneListerComponent implements OnInit, OnChanges {
   @Input()
   event!: Personne;
 
+  @Output()
+  displayContact: boolean = false;
+
+  changeToggle!: MatSlideToggleChange;
   personnes: Personne[] = [];
   modif: boolean = false;
 
@@ -19,10 +24,7 @@ export class PersonneListerComponent implements OnInit, OnChanges {
     this.ps
       .getPersonne()
       .subscribe((personnes: Personne[]) => (this.personnes = personnes));
-  }
-
-  constructor(private ps: PersonneServiceService, private ms: MessagesService) {
-    // this.updatePersonne();
+    console.log('update personne');
   }
 
   traiterSuppressionPersonne(personneAsupprimer: Personne): void {
@@ -43,9 +45,22 @@ export class PersonneListerComponent implements OnInit, OnChanges {
       console.log('updateModif');
     }
   }
+
+  updateDisplayContact(change: MatSlideToggleChange) {
+    if (change != undefined) {
+      this.displayContact = change.checked;
+    }
+  }
+
+  constructor(
+    private ps: PersonneServiceService,
+    private ms: MessagesService
+  ) {}
+
   ngOnInit(): void {}
 
   ngOnChanges(): void {
     this.updatePersonne();
+    this.updateDisplayContact(this.changeToggle);
   }
 }

@@ -5,12 +5,14 @@
     <span class="firstname">{{personne.prenom | upperfirst}}</span>
     <span class="lastname"> {{personne.nom |uppercase }}</span>
   </mat-card-title>
-  <mat-card-content class="phoneNumber" *ngIf="personne.telephone">
-    {{personne.telephone}}
-    <p *ngIf="personne.adresse">
-      {{personne.adresse}}
-    </p>
-  </mat-card-content>
+  <div class="contact" *ngIf="displayContact">
+    <mat-card-content class="phoneNumber" *ngIf="personne.telephone">
+      {{personne.telephone}}
+      <p *ngIf="personne.adresse">
+        {{personne.adresse}}
+      </p>
+    </mat-card-content>
+  </div>
   <mat-card-actions class="supprimer">
     <button mat-fab color="warn" (click)="onClickBoutonSupprimer(personne)">
       <mat-icon>delete</mat-icon>
