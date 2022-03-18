@@ -3,6 +3,11 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Personne } from '../models/personne';
 import { MessagesService } from '../services/messages.service';
 import { PersonneServiceService } from '../services/personne-service.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-personne-lister',
@@ -22,6 +27,9 @@ export class PersonneListerComponent implements OnInit, OnChanges {
   changeToggle!: MatSlideToggleChange;
   personnes: Personne[] = [];
   modif: boolean = false;
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   updatePersonne() {
     this.ps
@@ -55,9 +63,19 @@ export class PersonneListerComponent implements OnInit, OnChanges {
     }
   }
 
+  updatedPersonne(personne: Personne) {
+    console.log('update');
+    console.log(personne);
+    this._snackBar.open(`La personne a été mise à jour`, 'ok', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+    this.updatePersonne();
+  }
   constructor(
     private ps: PersonneServiceService,
-    private ms: MessagesService
+    private ms: MessagesService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}

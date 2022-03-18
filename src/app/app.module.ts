@@ -28,6 +28,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PersonnePopupModule } from './personne-popup/personne-popup.module';
@@ -66,6 +67,7 @@ import { PersonnePopupModule } from './personne-popup/personne-popup.module';
     MatSlideToggleModule,
     MatDialogModule,
     PersonnePopupModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

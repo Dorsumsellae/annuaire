@@ -38,7 +38,7 @@ export class PersonneDetailsComponent implements OnInit {
       data: this.personne,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe(() => {
       this.updatePersonneEventEmitter.emit(this.personne);
     });
   }
