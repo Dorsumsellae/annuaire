@@ -13,6 +13,9 @@ export class PersonneListerComponent implements OnInit, OnChanges {
   @Input()
   event!: Personne;
 
+  @Input()
+  updateEvent!: Personne;
+
   @Output()
   displayContact: boolean = false;
 

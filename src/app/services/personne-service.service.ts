@@ -27,6 +27,14 @@ export class PersonneServiceService {
     });
   }
 
+  updatePersonne(personne: Personne) {
+    return this.http.post(
+      `${this.personnesUrl}/${personne.id}/replace`,
+      personne,
+      this.httpOptions
+    );
+  }
+
   countPersonne(): Observable<any> {
     return this.http.get<Personne>(this.personnesUrl + '/count');
   }

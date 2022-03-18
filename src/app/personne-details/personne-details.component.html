@@ -4,12 +4,13 @@
     <span> - {{personne.civilite}} </span>
     <span class="firstname">{{personne.prenom | upperfirst}}</span>
     <span class="lastname"> {{personne.nom |uppercase }}</span>
+    <button mat-button (click)="openDialog()">Modifier</button>
   </mat-card-title>
   <div class="contact" *ngIf="displayContact">
     <mat-card-content class="phoneNumber" *ngIf="personne.telephone">
-      {{personne.telephone}}
+      <mat-icon>phone</mat-icon> {{personne.telephone}}
       <p *ngIf="personne.adresse">
-        {{personne.adresse}}
+        <mat-icon>home</mat-icon> {{personne.adresse}}
       </p>
     </mat-card-content>
   </div>

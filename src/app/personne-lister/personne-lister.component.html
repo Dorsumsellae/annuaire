@@ -4,7 +4,8 @@
 <div class="personnes">
   <div *ngFor="let personne of personnes; let i=index" class="personne">
     <app-personne-details [i]="i" [personne]="personne" [displayContact]="displayContact"
-      (supressionPersonneEventEmitter)="traiterSuppressionPersonne($event)">
+      (supressionPersonneEventEmitter)="traiterSuppressionPersonne($event)"
+      (updatePersonneEventEmitter)="updatePersonne()">
     </app-personne-details>
   </div>
 </div>

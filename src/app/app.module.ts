@@ -30,8 +30,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PersonneModifierComponent } from './personne-modifier/personne-modifier.component';
-import { PersonnePopupComponent } from './personne-popup/personne-popup.component';
+import { PersonnePopupModule } from './personne-popup/personne-popup.module';
 
 @NgModule({
   declarations: [
@@ -47,8 +46,6 @@ import { PersonnePopupComponent } from './personne-popup/personne-popup.componen
     MessagesComponent,
     PersonneCompterComponent,
     TabGroupComponent,
-    PersonneModifierComponent,
-    PersonnePopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +65,7 @@ import { PersonnePopupComponent } from './personne-popup/personne-popup.componen
     FlexLayoutModule,
     MatSlideToggleModule,
     MatDialogModule,
+    PersonnePopupModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
